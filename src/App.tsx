@@ -18,7 +18,9 @@ function App() {
         >
           Learn React
         </a>
+        <p>Листай ↓</p>
       </header>
+      <section className="App-header"> ку</section>
     </div>
   );
 }
