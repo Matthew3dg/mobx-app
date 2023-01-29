@@ -1,0 +1,45 @@
+import { makeAutoObservable } from 'mobx';
+import { ITodo } from '../types/types';
+
+class Todos {
+  myTodos: ITodo[] = [
+    {
+      userId: 1,
+      id: 1,
+      title: 'Повторить mobX',
+      completed: true,
+    },
+    {
+      userId: 1,
+      id: 2,
+      title: 'Повторить Redux',
+      completed: false,
+    },
+    {
+      userId: 2,
+      id: 3,
+      title: 'Углубиться в TS',
+      completed: false,
+    },
+  ];
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  addTodo(todo: ITodo) {
+    this.myTodos.push(todo);
+  }
+
+  removeTodo(id: number) {
+    this.myTodos = this.myTodos.filter((todosItem) => {
+      return todosItem.id !== id;
+    });
+  }
+  changeTodoStatus(index: number) {
+    const currentTodo = this.myTodos[index];
+    this.myTodos[index] = { ...currentTodo, completed: !currentTodo.completed };
+  }
+}
+
+export default new Todos();
