@@ -11,7 +11,7 @@ const MyTodos = () => {
     <div>
       {todos.myTodos.map((t, i) => {
         return (
-          <div>
+          <div key={t.id}>
             <input type="checkbox" onChange={() => changeTodoStatus(i)} checked={t.completed} />
             <span>{t.title} </span>
             <button onClick={() => deleteTodo(t.id)}>Удалить</button>
