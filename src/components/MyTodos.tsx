@@ -5,8 +5,7 @@ import todosObj from '../store/todos';
 
 const MyTodos = () => {
   const changeTodoStatus = (index: number) => todosObj.changeTodoStatus(index);
-  const deleteTodo = (todoId: number) => todosObj.removeTodo(todoId);
-
+  const deleteTodo = (todoId: string) => todosObj.removeTodo(todoId);
   return (
     <div>
       {todos.myTodos.map((t, i) => {

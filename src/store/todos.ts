@@ -4,20 +4,20 @@ import { ITodo } from '../types/types';
 class Todos {
   myTodos: ITodo[] = [
     {
-      userId: 1,
-      id: 1,
+      userId: '1',
+      id: '-1',
       title: 'Повторить mobX',
       completed: true,
     },
     {
-      userId: 1,
-      id: 2,
+      userId: '1',
+      id: '-2',
       title: 'Повторить Redux',
       completed: false,
     },
     {
-      userId: 2,
-      id: 3,
+      userId: '2',
+      id: '-3',
       title: 'Углубиться в TS',
       completed: false,
     },
@@ -31,7 +31,7 @@ class Todos {
     this.myTodos.push(todo);
   }
 
-  removeTodo(id: number) {
+  removeTodo(id: string) {
     this.myTodos = this.myTodos.filter((todosItem) => {
       return todosItem.id !== id;
     });
