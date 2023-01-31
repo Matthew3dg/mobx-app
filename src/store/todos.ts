@@ -40,6 +40,12 @@ class Todos {
     const currentTodo = this.myTodos[index];
     this.myTodos[index] = { ...currentTodo, completed: !currentTodo.completed };
   }
+
+  fetchTodos() {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then((response) => response.json())
+      .then((json) => (this.myTodos = this.myTodos.concat(json)));
+  }
 }
 
 export default new Todos();

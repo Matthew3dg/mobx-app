@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import todos from '../store/todos';
 import todosObj from '../store/todos';
 
 const MyTodos = () => {
+  useEffect(() => {
+    todosObj.fetchTodos();
+  }, []);
+
   const changeTodoStatus = (index: number) => todosObj.changeTodoStatus(index);
   const deleteTodo = (todoId: string) => todosObj.removeTodo(todoId);
   return (
