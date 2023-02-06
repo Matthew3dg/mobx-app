@@ -27,8 +27,12 @@ class Todos {
     makeAutoObservable(this);
   }
 
-  addTodo(todo: ITodo) {
-    this.myTodos.push(todo);
+  addTodo(todo: ITodo | ITodo[]) {
+    if (Array.isArray(todo)) {
+      this.myTodos.unshift(...todo);
+    } else {
+      this.myTodos.unshift(todo);
+    }
   }
 
   removeTodo(id: string) {
@@ -41,10 +45,17 @@ class Todos {
     this.myTodos[index] = { ...currentTodo, completed: !currentTodo.completed };
   }
 
-  fetchTodos() {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((response) => response.json())
-      .then((json) => (this.myTodos = this.myTodos.concat(json)));
+  async fetchTodos() {
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+      if (!response.ok) {
+        throw new Error('Ошибка запроса');
+      }
+      const data = await response.json();
+      this.addTodo(data);
+    } catch (error) {
+      alert(error);
+    }
   }
 }
 
