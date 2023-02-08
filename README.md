@@ -1,4 +1,5 @@
 # React+TypeScript+MobX app
+Small Todo-app to remember how to use MobX
 
 ## Demo
 https://matthew3dg.github.io/mobx-app/
